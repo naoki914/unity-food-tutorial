@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour {
 
+    public static SoundManager Instance { get; private set; }
     [SerializeField] private AudioClipRefsSO audioClipRefsSO;
+    private void Awake() {
+        Instance = this;
+    }
     private void Start() {
         DeliveryManager.Instance.OnRecipeSuccess += DeliveryManager_OnRecipeSuccess;
         DeliveryManager.Instance.OnRecipeFail += DeliveryManager_OnRecipeFail;
@@ -14,6 +18,9 @@ public class SoundManager : MonoBehaviour {
         TrashCounter.OnAnyObjectTrashed += TrashCounter_OnAnyObjectTrashed;
     }
 
+    public void Player_FootstepsSound(Vector3 position) {
+        PlaySound(audioClipRefsSO.footstep, position);
+    }
     private void Player_OnPickedSomething(object sender, System.EventArgs e) {
         PlaySound(audioClipRefsSO.objectPickup, Player.Instance.transform.position);
     }
