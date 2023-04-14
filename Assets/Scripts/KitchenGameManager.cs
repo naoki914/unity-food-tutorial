@@ -93,7 +93,7 @@ public class KitchenGameManager : MonoBehaviour {
         return 1 - (gamePlayingTimer / gameTimerMax);
     }
 
-    private void TogglePauseGame() {
+    public void TogglePauseGame() {
         isGamePaused = !isGamePaused;
 
         if (isGamePaused) {

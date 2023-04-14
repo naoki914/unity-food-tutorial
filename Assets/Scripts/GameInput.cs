@@ -22,6 +22,10 @@ public class GameInput : MonoBehaviour {
         playerInputActions.Player.Pause.performed += Pause_performed;
     }
 
+    private void OnDestroy() {
+        playerInputActions.Dispose();
+    }
+
     private void Pause_performed(UnityEngine.InputSystem.InputAction.CallbackContext callback) {
         OnPauseAction?.Invoke(this, EventArgs.Empty);
     }
