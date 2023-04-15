@@ -23,6 +23,10 @@ public class GamePausedUI : MonoBehaviour {
         Hide();
     }
 
+    private void OnDestroy() {
+        KitchenGameManager.Instance.OnGamePaused -= KitchenGameManager_OnGamePaused;
+        KitchenGameManager.Instance.OnGameUnpaused -= KitchenGameManager_OnGameUnpaused;
+    }
 
     private void KitchenGameManager_OnGamePaused(object sender, System.EventArgs e) {
         Show();
